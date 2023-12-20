@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -87,6 +87,14 @@ const Navbar = () => {
               >
                 Blog
               </a>
+              <Link
+                to="/login"
+                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+               
+              >
+                Login/Register
+              </Link>
+              
             </div>
           </div>
         </nav>

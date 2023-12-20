@@ -55,15 +55,15 @@ const AuthProvider = ({ children }) => {
 
   // onAuthStateChange
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      console.log("CurrentUser-->", currentUser);
-      setLoading(false);
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+        console.log("user in the state change", currentUser);
+        setUser(currentUser);
+        setLoading(false)
     });
     return () => {
-      return unsubscribe();
-    };
-  }, []);
+        unSubscribe();
+    }
+}, [])
 
   const authInfo = {
     user,
@@ -78,7 +78,9 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+      </AuthContext.Provider>
   );
 };
 
