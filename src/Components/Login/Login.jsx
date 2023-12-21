@@ -5,26 +5,23 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/Authprovider";
 
-
 const Login = () => {
-  const { signIn, signInWithGoogle } =useContext(AuthContext)
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleGoogleSignIn = () => {
-    signInWithGoogle().
-    then((result) => {
-        console.log(result);
-        navigate("/");
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Successfully Logged In",
-            showConfirmButton: false,
-            timer: 1500,
-        });
+    signInWithGoogle().then((result) => {
+      console.log(result);
+      navigate("/dashboard");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Successfully Logged In",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
-    };
-    
-    
+  };
+
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -38,8 +35,8 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      
-      navigate("/");
+
+      navigate("/dashboard");
       console.log(result.user);
     });
   };

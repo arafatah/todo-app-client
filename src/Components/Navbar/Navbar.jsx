@@ -1,6 +1,15 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/Authprovider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logOut();
+    // Redirect to the home page after logout
+    navigate("/")
+  };
   return (
     <div>
       <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
@@ -87,14 +96,36 @@ const Navbar = () => {
               >
                 Blog
               </a>
-              <Link
-                to="/login"
-                className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-               
-              >
-                Login/Register
-              </Link>
-              
+              {user ? (
+                <div className="flex items-center gap-2">
+                  <img
+                    src={user.photoURL}
+                    alt="User Profile"
+                    className="w-8 h-8 rounded-full cursor-pointer"
+                    onClick={() => {
+                      // Handle the click on the profile picture
+                      // This is just an example, you might want to show a modal or redirect to a profile page
+                      console.log("Profile picture clicked");
+                    }}
+                  />
+                  <span className="text-gray-600">
+                    {user.displayName || user.email}
+                  </span>
+                  <button
+                    className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                >
+                  Login/Register
+                </Link>
+              )}
             </div>
           </div>
         </nav>

@@ -7,13 +7,14 @@ import { AuthContext } from "../../Provider/Authprovider";
 import { imageUpload } from "../../Api/utilits";
 
 const Register = () => {
-  const { createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
+  const { createUser, updateUserProfile, signInWithGoogle } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
     signInWithGoogle().then((result) => {
       console.log(result);
-      navigate("/");
+      navigate("/dashboard");
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -44,7 +45,7 @@ const Register = () => {
       showConfirmButton: false,
       timer: 1500,
     });
-    navigate("/");
+    navigate("/dashboard");
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
