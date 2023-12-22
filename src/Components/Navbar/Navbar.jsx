@@ -18,12 +18,12 @@ const Navbar = () => {
           aria-label="Global"
         >
           <div className="flex items-center justify-between">
-            <a
+            <Link to="/"
               className="flex-none text-xl font-semibold dark:text-white"
               href="#"
             >
               onDay
-            </a>
+            </Link>
             <div className="sm:hidden">
               <button
                 type="button"
@@ -71,13 +71,7 @@ const Navbar = () => {
             className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
           >
             <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-              <a
-                className="font-medium text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="#"
-                aria-current="page"
-              >
-                Landing
-              </a>
+              
               <a
                 className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#"
@@ -90,12 +84,13 @@ const Navbar = () => {
               >
                 Work
               </a>
-              <a
+              {user?.email && (
+              <Link to="/dashboard"
                 className="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 href="#"
               >
-                Blog
-              </a>
+                Dashboard
+              </Link>)}
               {user ? (
                 <div className="flex items-center gap-2">
                   <img

@@ -1,10 +1,13 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import UserTypeSection from './UserTypeSection/UserTypeSection';
+import Navbar from '../Navbar/Navbar';
 
 const Dashboard = () => {
   return (
-    <div className="p-8">
+    <div>
+      <Navbar></Navbar>
+      <div className="p-8">
+      
       <h1 className="text-3xl font-bold mb-4">Task Management Dashboard</h1>
 
       <div className="flex space-x-4">
@@ -28,6 +31,7 @@ const Dashboard = () => {
 
       </div>
       <UserTypeSection></UserTypeSection>
+    </div>
     </div>
   );
 };

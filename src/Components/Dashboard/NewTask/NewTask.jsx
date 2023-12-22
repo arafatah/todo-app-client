@@ -12,7 +12,7 @@ const NewTask = () => {
     try {
       const userEmail = user && user?.email
       const taskData = { ...data, userEmail, status: "todo" };
-      await axios.post("http://localhost:5000/todos", taskData);
+      await axios.post("https://todo-application-server-nine.vercel.app/todos", taskData);
       Swal.fire({
         position: "top-end",
         icon: "success",
