@@ -3,11 +3,14 @@ import axios from "axios";
 import { AuthContext } from "../../../Provider/Authprovider";
 import { FaTrash, FaArrowRight } from "react-icons/fa";
 import Navbar from "../../Navbar/Navbar";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 const TaskList = () => {
   const [todoList, setTodoList] = useState([]);
   const { user } = useContext(AuthContext);
 
+ 
   const handleDeleteTask = async (taskId) => {
     try {
       // Send a request to delete the task
@@ -62,6 +65,8 @@ const TaskList = () => {
     };
 
     fetchTodos();
+    Aos.init({duration:2000})
+
   }, [user?.email]);
 
   // Categorize tasks based on status
@@ -74,7 +79,8 @@ const TaskList = () => {
       <Navbar />
       <div className="container mx-auto flex flex-col md:flex-row md:space-x-8 my-3">
       
-      <div className="md:flex-1">
+      <div className="md:flex-1 " data-aos = "fade-left"
+>
         <h2 className="text-xl font-bold mb-4">To-Do List</h2>
         <ul className="space-y-4">
           {todoTasks.map((todo) => (
@@ -100,7 +106,8 @@ const TaskList = () => {
         </ul>
       </div>
 
-      <div className="md:flex-1">
+      <div className="md:flex-1" data-aos = "fade-right"
+>
         <h2 className="text-xl font-bold mb-4">Ongoing List</h2>
         <ul className="space-y-4">
           {ongoingTasks.map((ongoing) => (
@@ -126,7 +133,8 @@ const TaskList = () => {
         </ul>
       </div>
 
-      <div className="md:flex-1">
+      <div className="md:flex-1" data-aos = "fade-up"
+>
         <h2 className="text-xl font-bold mb-4">Completed List</h2>
         <ul className="space-y-4">
           {completedTasks.map((completed) => (

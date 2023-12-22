@@ -6,6 +6,7 @@ import Login from "../Components/Login/Login";
 import Dashboard from "../Components/Dashboard/Dashboard";
 import TaskList from "../Components/Dashboard/TaskList/TaskList";
 import NewTask from "../Components/Dashboard/NewTask/NewTask";
+import PrivetRoute from "./PrivetRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -26,15 +27,15 @@ const Routes = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Dashboard></Dashboard>
+        element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>
       },
       {
         path: "tasklist",
-        element: <TaskList></TaskList>
+        element: <PrivetRoute><TaskList></TaskList></PrivetRoute>
       },
       {
         path: "addtask",
-        element: <NewTask></NewTask>
+        element: <PrivetRoute><NewTask></NewTask></PrivetRoute>
       }
     ],
   },
